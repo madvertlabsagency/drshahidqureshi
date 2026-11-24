@@ -934,3 +934,33 @@ h2{font-size:clamp(2rem,4.2vw,3.3rem)}
 .pi-body .btn{padding:12px 18px;font-size:.88rem}
 @media (max-width:760px){.pop-interest{right:12px;bottom:84px;grid-template-columns:100px 1fr}.pi-photo{min-height:170px}}
 .reading-orb img{width:240px;height:240px}
+
+/* ================= Branded 3D icons (no emoji) ================= */
+.bi{position:relative;display:inline-grid;place-items:center;flex-shrink:0;border-radius:28%;isolation:isolate;transform:translateZ(0)}
+.bi::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1}
+.bi::after{content:"";position:absolute;left:10%;right:10%;top:5%;height:42%;border-radius:40% 40% 50% 50%/60% 60% 40% 40%;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0));z-index:1;pointer-events:none}
+.bi-glyph{width:56%;height:56%;position:relative;z-index:2}
+.bi-emerald::before{background:radial-gradient(120% 120% at 30% 20%,#14895C 0%,#0B6B47 35%,#003D2B 75%,#00261B 100%);box-shadow:inset 0 -6px 10px rgba(0,0,0,.35),inset 0 3px 4px rgba(255,255,255,.18),0 10px 18px -6px rgba(0,61,43,.55),0 3px 0 #00261B}
+.bi-emerald .bi-glyph{color:#FFD34D;filter:drop-shadow(0 2px 0 #B07F00) drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+.bi-gold::before{background:radial-gradient(120% 120% at 30% 20%,#FFF1B8 0%,#FFD34D 30%,#FFBF00 60%,#C98F00 100%);box-shadow:inset 0 -6px 10px rgba(150,95,0,.45),inset 0 3px 4px rgba(255,255,255,.6),0 10px 18px -6px rgba(224,165,0,.6),0 3px 0 #A87700}
+.bi-gold .bi-glyph{color:#003D2B;filter:drop-shadow(0 1.5px 0 rgba(255,255,255,.55)) drop-shadow(0 3px 4px rgba(0,38,27,.35))}
+.bi-muted::before{background:radial-gradient(120% 120% at 30% 20%,#FFFFFF 0%,#E4E6E1 45%,#C9CDC7 100%);box-shadow:inset 0 -5px 8px rgba(0,0,0,.12),inset 0 3px 4px #fff,0 8px 14px -6px rgba(0,0,0,.25),0 3px 0 #B5BAB3}
+.bi-muted .bi-glyph{color:#7C847F;filter:drop-shadow(0 1.5px 0 #fff)}
+.bi-glass::before{background:linear-gradient(150deg,rgba(255,255,255,.28),rgba(255,255,255,.06));border:1px solid rgba(255,191,0,.5);backdrop-filter:blur(6px);box-shadow:0 10px 20px -8px rgba(0,0,0,.4)}
+.bi-glass .bi-glyph{color:#FFD34D}
+.flip:hover .bi{transform:translateY(-4px) rotate(-4deg)}
+.bi{transition:transform .4s var(--ease)}
+.flip-face .bi{margin-bottom:4px}
+.flip-toggle .bi{border-radius:30%}
+.pa-a.bi{position:relative;z-index:1}
+.pa-b.bi{position:absolute}
+.pa-c.bi{position:absolute}
+.cc-top .bi,.cv-total .bi,.cv-col li .bi{animation:none}
+.cv-total .bi{animation:float 4s ease-in-out infinite}
+
+/* IESS flag counts */
+.flag{position:relative}
+.flag-count{position:absolute;top:-6px;right:6px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--gold);color:var(--emerald);font-style:normal;font-family:var(--font-head);font-weight:800;font-size:.74rem;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.35)}
+.flag-count.big{top:0;right:calc(50% - 62px);min-width:36px;height:36px;font-size:1rem}
+.iess-note{max-width:760px;margin:26px auto 0;text-align:center;font-size:.95rem;color:rgba(250,250,247,.82)}
+.iess-note b{color:var(--gold)}

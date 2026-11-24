@@ -3,20 +3,21 @@ import Image from "next/image";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const i3 = (n: string) => `/img/3d/${n}.webp`;
+import { BrandIcon, type BrandIconName } from "@/components/ui/BrandIcon";
+const I = (n: string) => n as BrandIconName;
 
 /* ------------------------------------------------------------------ */
 /* Transformation: playful flip cards with 3D icons                     */
 /* ------------------------------------------------------------------ */
 const shifts = [
-  { from: "Dependence", fi: "chains", to: "Independence", ti: "eagle" },
-  { from: "Hopelessness", fi: "sad", to: "Hope", ti: "sunrise" },
-  { from: "Taking", fi: "moneybag", to: "Giving", ti: "gift" },
-  { from: "Selfishness", fi: "person", to: "Beyond Self", ti: "handshake" },
-  { from: "Fixed Mindset", fi: "brick", to: "Growth Mindset", ti: "seedling" },
+  { from: "Dependence", fi: "link", to: "Independence", ti: "wings" },
+  { from: "Hopelessness", fi: "rain", to: "Hope", ti: "sunrise" },
+  { from: "Taking", fi: "take", to: "Giving", ti: "gift" },
+  { from: "Selfishness", fi: "user", to: "Beyond Self", ti: "handshake" },
+  { from: "Fixed Mindset", fi: "wall", to: "Growth Mindset", ti: "sprout" },
   { from: "Finite Mindset", fi: "hourglass", to: "Infinite Mindset", ti: "infinity" },
   { from: "Purposelessness", fi: "fog", to: "Purpose & Meaning", ti: "target" },
-  { from: "Blind Following", fi: "sheep", to: "Creativity", ti: "bulb" },
+  { from: "Blind Following", fi: "follow", to: "Creativity", ti: "bulb" },
   { from: "Plan Only", fi: "clipboard", to: "Act & Adapt", ti: "compass" },
   { from: "Consumer", fi: "cart", to: "Creator", ti: "rocket" },
 ];
@@ -40,10 +41,10 @@ export function TransformFlip() {
     <div ref={ref}>
       <div className="flip-toggle" role="group" aria-label="Before and after GCE">
         <button className={!after ? "on" : ""} onClick={() => { setManual({}); setAfter(false); }}>
-          <Image src={i3("sad")} alt="" width={26} height={26} /> Before GCE
+          <BrandIcon name="rain" size={28} tone="muted" /> Before GCE
         </button>
         <button className={after ? "on" : ""} onClick={() => { setManual({}); setAfter(true); }}>
-          <Image src={i3("sparkles")} alt="" width={26} height={26} /> After GCE
+          <BrandIcon name="sparkle" size={28} tone="emerald" /> After GCE
         </button>
       </div>
       <div className="flip-grid">
@@ -57,11 +58,11 @@ export function TransformFlip() {
           >
             <span className="flip-inner" style={{ transitionDelay: `${after && !(i in manual) ? i * 110 : 0}ms` }}>
               <span className="flip-face front">
-                <Image src={i3(s.fi)} alt="" width={72} height={72} />
+                <BrandIcon name={I(s.fi)} size={76} tone="muted" />
                 <b>{s.from}</b>
               </span>
               <span className="flip-face back">
-                <Image src={i3(s.ti)} alt="" width={72} height={72} />
+                <BrandIcon name={I(s.ti)} size={76} tone="gold" />
                 <b>{s.to}</b>
               </span>
             </span>
@@ -83,19 +84,19 @@ export function RoadblockArt() {
         <span className="lane" />
       </div>
       <div className="barrier">
-        <Image src={i3("construction")} alt="" width={120} height={120} className="cone" />
+        <BrandIcon name="barrier" size={104} tone="gold" className="cone" />
         <div className="signs">
           <span>Not enough capital</span>
           <span>Not the right time</span>
           <span>No perfect idea yet</span>
         </div>
       </div>
-      <Image src={i3("thinking")} alt="" width={84} height={84} className="thinker" />
+      <BrandIcon name="question" size={80} tone="emerald" className="thinker" />
       <svg className="detour" viewBox="0 0 400 160" preserveAspectRatio="none">
         <path d="M20 140 C 120 140, 140 30, 250 40 S 370 60, 385 20" />
       </svg>
       <div className="whatif">
-        <Image src={i3("bulb")} alt="" width={48} height={48} />
+        <BrandIcon name="bulb" size={46} tone="gold" />
         <span>
           <b>What if…</b>you start with what you already have?
         </span>
@@ -108,11 +109,11 @@ export function RoadblockArt() {
 /* Principle artworks (3D icon compositions)                            */
 /* ------------------------------------------------------------------ */
 const arts: Record<string, { a: string; b: string; c?: string; label: string }> = {
-  "01": { a: "palms", b: "bird", c: "books", label: "Who you are · What you know · Whom you know" },
+  "01": { a: "hand", b: "bird", c: "books", label: "Who you are · What you know · Whom you know" },
   "02": { a: "scale", b: "coin", c: "shield", label: "Risk only what you can afford" },
-  "03": { a: "puzzle", b: "handshake", c: "thread", label: "Partners stitch the venture together" },
-  "04": { a: "lemon", b: "drink", c: "sparkles", label: "Surprises become opportunities" },
-  "05": { a: "plane", b: "steering", c: "compass", label: "Steer what you can control" },
+  "03": { a: "puzzle", b: "handshake", c: "needle", label: "Partners stitch the venture together" },
+  "04": { a: "lemon", b: "glass", c: "sparkle", label: "Surprises become opportunities" },
+  "05": { a: "plane", b: "wheel", c: "compass", label: "Steer what you can control" },
 };
 
 export function PrincipleArt({ n }: { n: string }) {
@@ -120,9 +121,9 @@ export function PrincipleArt({ n }: { n: string }) {
   return (
     <div className="p-art" aria-hidden="true">
       <span className="glow" />
-      <Image src={i3(x.a)} alt="" width={150} height={150} className="pa-a" />
-      <Image src={i3(x.b)} alt="" width={110} height={110} className="pa-b" />
-      {x.c && <Image src={i3(x.c)} alt="" width={70} height={70} className="pa-c" />}
+      <BrandIcon name={I(x.a)} size={140} tone="gold" className="pa-a" />
+      <BrandIcon name={I(x.b)} size={100} tone="emerald" className="pa-b" />
+      {x.c && <BrandIcon name={I(x.c)} size={66} tone="glass" className="pa-c" />}
       <span className="pa-label">{x.label}</span>
     </div>
   );
@@ -131,12 +132,13 @@ export function PrincipleArt({ n }: { n: string }) {
 /* ------------------------------------------------------------------ */
 /* Flags gathering from around the world                                */
 /* ------------------------------------------------------------------ */
-const flags: [string, string][] = [
-  ["us", "USA"], ["ca", "Canada"], ["gb", "UK"], ["de", "Germany"], ["nl", "Netherlands"], ["pt", "Portugal"], ["fr", "France"],
-  ["sa", "Saudi Arabia"], ["ae", "UAE"], ["qa", "Qatar"], ["om", "Oman"], ["tr", "Türkiye"], ["eg", "Egypt"], ["ke", "Kenya"],
-  ["ng", "Nigeria"], ["gh", "Ghana"], ["so", "Somalia"], ["kz", "Kazakhstan"], ["az", "Azerbaijan"], ["af", "Afghanistan"],
-  ["in", "India"], ["bd", "Bangladesh"], ["lk", "Sri Lanka"], ["my", "Malaysia"], ["th", "Thailand"], ["id", "Indonesia"],
-  ["au", "Australia"], ["nz", "New Zealand"], ["cu", "Cuba"],
+/** Countries participants have come from. Counts = IBA International Entrepreneurship Summer School (IESS) banner. */
+const flags: [string, string, number?][] = [
+  ["th", "Thailand", 16], ["cn", "China", 4], ["au", "Australia", 3], ["mx", "Mexico", 1], ["zw", "Zimbabwe", 1], ["ru", "Russia", 1],
+  ["lu", "Luxembourg", 1], ["ca", "Canada", 1], ["us", "USA", 1], ["na", "Namibia", 1], ["bd", "Bangladesh", 1], ["az", "Azerbaijan", 1],
+  ["np", "Nepal", 1], ["gb", "UK"], ["de", "Germany"], ["nl", "Netherlands"], ["pt", "Portugal"], ["sa", "Saudi Arabia"], ["ae", "UAE"],
+  ["qa", "Qatar"], ["ke", "Kenya"], ["ng", "Nigeria"], ["gh", "Ghana"], ["so", "Somalia"], ["kz", "Kazakhstan"], ["af", "Afghanistan"],
+  ["in", "India"], ["my", "Malaysia"], ["id", "Indonesia"], ["nz", "New Zealand"],
 ];
 
 export function FlagGather() {
@@ -146,7 +148,7 @@ export function FlagGather() {
   return (
     <div ref={ref} className="flag-stage">
       <div className="flag-cluster">
-        {flags.map(([cc, name], i) => {
+        {flags.map(([cc, name, count], i) => {
           const ang = (i / flags.length) * Math.PI * 2;
           const r = 520;
           return (
@@ -154,11 +156,12 @@ export function FlagGather() {
               key={cc}
               className="flag"
               title={name}
-              initial={reduce ? false : { x: Math.cos(ang) * r, y: Math.sin(ang) * r * 0.6, opacity: 0, scale: 0.4, rotate: (i % 2 ? 1 : -1) * 90 }}
+              initial={reduce ? false : { x: Math.round(Math.cos(ang) * r), y: Math.round(Math.sin(ang) * r * 0.6), opacity: 0, scale: 0.4, rotate: (i % 2 ? 1 : -1) * 90 }}
               animate={inView ? { x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 } : undefined}
               transition={{ type: "spring", stiffness: 60, damping: 14, delay: i * 0.05 }}
             >
               <Image src={`/img/flags/${cc}.svg`} alt={name} width={56} height={56} />
+              {count ? <em className="flag-count">{count}</em> : null}
               <small>{name}</small>
             </motion.span>
           );
@@ -173,6 +176,10 @@ export function FlagGather() {
           <small>They came to learn in Pakistan</small>
         </motion.span>
       </div>
+      <p className="iess-note">
+        <b>IBA International Entrepreneurship Summer School:</b> 44 from Pakistan, 16 from Thailand, 4 from China, 3 from Australia, and participants from Mexico,
+        Zimbabwe, Russia, Luxembourg, Canada, the USA, Namibia, Bangladesh, Azerbaijan and Nepal.
+      </p>
     </div>
   );
 }

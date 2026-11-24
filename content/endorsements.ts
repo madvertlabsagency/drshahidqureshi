@@ -205,7 +205,7 @@ export const caseStudies = [
     source: "Faisal Bin Badar",
   },
   {
-    icon: "people",
+    icon: "users",
     title: "500+ young people in Karachi equipped to earn",
     who: "UNDP Youth Employment Project",
     before: "Youth in Karachi without employable or entrepreneurial skills.",
@@ -214,7 +214,7 @@ export const caseStudies = [
     source: "Syed Moin Haider Zaidi, UNDP Pakistan",
   },
   {
-    icon: "classical",
+    icon: "building",
     title: "Pakistan's first entrepreneurship centre with an incubator",
     who: "IBA Centre for Entrepreneurial Development, Karachi",
     before: "No dedicated university entrepreneurship centre with an incubator in Pakistan.",
@@ -241,7 +241,7 @@ export const caseStudies = [
     source: "Dr. Shahid Qureshi School of Entrepreneurship",
   },
   {
-    icon: "seedling",
+    icon: "sprout",
     title: "Shaping an entrepreneurial university",
     who: "GIFT University, Gujranwala",
     before: "A business school in an SME heartland of light engineering, sports goods and ceramics.",

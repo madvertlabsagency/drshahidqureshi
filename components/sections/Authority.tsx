@@ -8,6 +8,7 @@ import { LogoMark } from "@/components/ui/Logo";
 import { ReviewMarquee, type ReviewItem } from "@/components/ui/ReviewMarquee";
 import { Button } from "@/components/ui/Button";
 import { BannerGallery } from "./Visual";
+import { BrandIcon, type BrandIconName } from "@/components/ui/BrandIcon";
 
 const asReview = (e: (typeof endorsements)[number]): ReviewItem => ({ kind: "review", ...e });
 
@@ -127,7 +128,7 @@ export function CaseStudies() {
         {caseStudies.map((c, i) => (
           <Reveal key={c.title} delay={(i % 3) * 0.08} className="case-card">
             <div className="cc-top">
-              <Image src={`/img/3d/${c.icon}.webp`} alt="" width={64} height={64} />
+              <BrandIcon name={c.icon as BrandIconName} size={62} tone="emerald" />
               <div><h4>{c.title}</h4><small>{c.who}</small></div>
             </div>
             <ol className="cc-steps">
@@ -175,20 +176,20 @@ export function CreativeStrip() {
 
 /* Pricing visual: abroad route vs GCE route with 3D icons */
 export function CostVisual() {
-  const abroad = [["classical", "Tuition at a top business school"], ["plane", "Flights & accommodation"], ["passport", "Visa & paperwork"], ["alarm", "Weeks away from work & family"]];
-  const gce = [["house", "Learn from home, every Saturday"], ["laptop", "Live online with Dr. Shahid"], ["handshake", "Global peer network"], ["grad", "GCE certificate"]];
+  const abroad = [["building", "Tuition at a top business school"], ["plane", "Flights & accommodation"], ["passport", "Visa & paperwork"], ["alarm", "Weeks away from work & family"]];
+  const gce = [["home", "Learn from home, every Saturday"], ["laptop", "Live online with Dr. Shahid"], ["handshake", "Global peer network"], ["grad", "GCE certificate"]];
   return (
     <div className="cost-visual">
       <Reveal className="cv-col cv-abroad">
         <span className="cv-tag">The usual route</span>
-        <div className="cv-total"><Image src="/img/3d/moneywings.webp" alt="" width={64} height={64} /><b>Tens of thousands of dollars</b></div>
-        <ul>{abroad.map(([i, t]) => <li key={t}><Image src={`/img/3d/${i}.webp`} alt="" width={44} height={44} />{t}</li>)}</ul>
+        <div className="cv-total"><BrandIcon name="money" size={62} tone="muted" /><b>Tens of thousands of dollars</b></div>
+        <ul>{abroad.map(([i, t]) => <li key={t}><BrandIcon name={i as BrandIconName} size={44} tone="muted" />{t}</li>)}</ul>
       </Reveal>
       <div className="cv-vs"><span>VS</span></div>
       <Reveal delay={0.15} className="cv-col cv-gce">
         <span className="cv-tag">The GCE route</span>
-        <div className="cv-total"><Image src="/img/3d/sparkles.webp" alt="" width={64} height={64} /><b>From PKR 70,000 for the Develop pathway</b></div>
-        <ul>{gce.map(([i, t]) => <li key={t}><Image src={`/img/3d/${i}.webp`} alt="" width={44} height={44} />{t}</li>)}</ul>
+        <div className="cv-total"><BrandIcon name="sparkle" size={62} tone="gold" /><b>From PKR 70,000 for the Develop pathway</b></div>
+        <ul>{gce.map(([i, t]) => <li key={t}><BrandIcon name={i as BrandIconName} size={44} tone="gold" />{t}</li>)}</ul>
         <Button href="/enroll?pathway=develop" trackId="cost_visual_enroll">Apply for Batch 10</Button>
       </Reveal>
       <Reveal delay={0.25} className="cv-quote">
