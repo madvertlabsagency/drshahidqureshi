@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "You're registered", robots: { index:
 export default function Confirmed() {
   const m = site.masterclass;
   const cal = m.date
-    ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("GCE Free Masterclass — Dr. Shahid Qureshi")}&details=${encodeURIComponent("Joining link will be sent by email & WhatsApp.")}`
+    ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("GCE Free Masterclass, Dr. Shahid Qureshi")}&details=${encodeURIComponent("Joining link will be sent by email & WhatsApp.")}`
     : null;
   return (
     <Shell eyebrow="Registration confirmed" title="You're Registered!" lead="Check your email and WhatsApp for joining details. Meanwhile, here's a personal welcome.">

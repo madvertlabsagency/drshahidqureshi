@@ -8,9 +8,9 @@ import { Ph } from "@/components/ui/Ph";
 export const metadata: Metadata = { title: "Free entrepreneurship resources" };
 
 const resources = [
-  { id: "resource-discovery", t: "The Resource Discovery Worksheet", b: "Map your skills, knowledge and network — your real starting capital." },
-  { id: "affordable-loss", t: "The Affordable-Loss Calculator", b: "Decide what you can afford to risk before taking your next step." },
-  { id: "five-principles", t: "The 5 Principles of Effectuation — Guide", b: "A practical summary of how expert entrepreneurs think." },
+  { id: "resource-discovery", t: "The Resource Discovery Worksheet", b: "Map your skills, knowledge and network, your real starting capital." },
+  { id: "affordable-loss", t: "The Affordable Loss Calculator", b: "Decide what you can afford to risk before taking your next step." },
+  { id: "five-principles", t: "The 5 Principles of Effectuation, Guide", b: "A practical summary of how expert entrepreneurs think." },
 ];
 
 export default async function Resources({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
@@ -28,7 +28,7 @@ export default async function Resources({ searchParams }: { searchParams: Promis
       </Shell>
     );
   return (
-    <Shell eyebrow="Free resources" title="Start Thinking Like an Entrepreneur — Today" lead="Practical tools from the GCE toolkit. Free, no strings attached.">
+    <Shell eyebrow="Free resources" title="Start Thinking Like an Entrepreneur, Today" lead="Practical tools from the GCE toolkit. Free, no strings attached.">
       <div className="grid-3">
         {resources.map((r) => (
           <div key={r.id} className="res-card">
@@ -42,7 +42,7 @@ export default async function Resources({ searchParams }: { searchParams: Promis
           </div>
         ))}
       </div>
-      <p className="center" style={{ marginTop: 16 }}><Ph>Proposed lead magnets — publish only approved resources</Ph></p>
+      <p className="center" style={{ marginTop: 16 }}><Ph>Proposed lead magnets, publish only approved resources</Ph></p>
     </Shell>
   );
 }

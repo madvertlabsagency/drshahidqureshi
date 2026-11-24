@@ -49,7 +49,7 @@ export const endorsements: Endorsement[] = [
   },
   {
     name: "Dr. Farrukh Iqbal",
-    title: "Executive Director (2016–19), Institute of Business Administration, Karachi · Ex Chairperson (2018–2023)",
+    title: "Executive Director (2016 to 2019), Institute of Business Administration, Karachi · Ex Chairperson (2018 to 2023)",
     org: "National Business Education Accreditation Council, Pakistan",
     photo: "/img/endorsers/dr-farrukh-iqbal.webp",
     quote:
@@ -159,9 +159,9 @@ export const studentVoices: Endorsement[] = [
 
 /** Short verbatim pull-quotes (exact sentences from the endorsements above). */
 export const pullQuotes = [
-  { quote: "Dr. Shahid Qureshi has created the most significant impact on the entrepreneurship education scene across Pakistan in the last ten years.", by: "Syed Zahoor Hassan, PhD — Former Vice Chancellor, LUMS" },
-  { quote: "Dr. Qureshi provides the heart and soul of hope in Pakistan to those working to start and grow a business in a low-income country.", by: "Dianne H.B. Welsh, Ph.D. — Hayes Distinguished Professor of Entrepreneurship" },
-  { quote: "His teachings in 2013 profoundly transformed my entrepreneurial mindset and redirected my professional journey.", by: "Faisal Bin Badar — former IBA MBA student" },
+  { quote: "Dr. Shahid Qureshi has created the most significant impact on the entrepreneurship education scene across Pakistan in the last ten years.", by: "Syed Zahoor Hassan, PhD, Former Vice Chancellor, LUMS" },
+  { quote: "Dr. Qureshi provides the heart and soul of hope in Pakistan to those working to start and grow a business in a low-income country.", by: "Dianne H.B. Welsh, Ph.D., Hayes Distinguished Professor of Entrepreneurship" },
+  { quote: "His teachings in 2013 profoundly transformed my entrepreneurial mindset and redirected my professional journey.", by: "Faisal Bin Badar, former IBA MBA student" },
 ];
 
 export const clientLogos = [
@@ -175,11 +175,11 @@ export const clientLogos = [
 ];
 
 export const mediaAppearances = [
-  { src: "/img/media/hum-news.webp", title: "HUM News — Business with no experience & smaller investment?" },
+  { src: "/img/media/hum-news.webp", title: "HUM News: Business with no experience & smaller investment?" },
   { src: "/img/media/tariq-masood.webp", title: "Podcast with Mufti Tariq Masood Speeches" },
   { src: "/img/media/zeeshan-usmani.webp", title: "Meeting with Zeeshan Usmani" },
   { src: "/img/media/tbt.webp", title: "Are universities producing unproductive corporate slaves?" },
-  { src: "/img/media/gift-interview.webp", title: "Interview — Rector, GIFT University Gujranwala" },
+  { src: "/img/media/gift-interview.webp", title: "Interview: Rector, GIFT University Gujranwala" },
   { src: "/img/media/future-podcast.webp", title: "Future Podcast Ep #15" },
 ];
 
@@ -191,4 +191,67 @@ export const gceCreatives = [
   { src: "/img/creatives/gce-5.webp", alt: "World-class learning experience" },
   { src: "/img/creatives/gce-6.webp", alt: "A high-value network" },
   { src: "/img/creatives/gce-7.webp", alt: "Support beyond the session" },
+];
+
+/** Impact case studies: every fact below comes from the endorsements above or Dr. Shahid's own published materials. */
+export const caseStudies = [
+  {
+    icon: "rocket",
+    title: "From one student in 2013 to a serial entrepreneur",
+    who: "Faisal Bin Badar · IBA MBA student, now PhD, Charles Darwin University",
+    before: "An MBA student at IBA Karachi looking for direction.",
+    did: "Learned entrepreneurship from Dr. Shahid in 2013.",
+    after: "Became a serial entrepreneur with 20+ years of experience. In his words: “His teachings in 2013 profoundly transformed my entrepreneurial mindset and redirected my professional journey.”",
+    source: "Faisal Bin Badar",
+  },
+  {
+    icon: "people",
+    title: "500+ young people in Karachi equipped to earn",
+    who: "UNDP Youth Employment Project",
+    before: "Youth in Karachi without employable or entrepreneurial skills.",
+    did: "Dr. Shahid's Centre for Entrepreneurial Development at IBA delivered the programme with UNDP.",
+    after: "“empowered over 500 youth in Karachi, providing them with essential skills and fostering entrepreneurial mindsets.”",
+    source: "Syed Moin Haider Zaidi, UNDP Pakistan",
+  },
+  {
+    icon: "classical",
+    title: "Pakistan's first entrepreneurship centre with an incubator",
+    who: "IBA Centre for Entrepreneurial Development, Karachi",
+    before: "No dedicated university entrepreneurship centre with an incubator in Pakistan.",
+    did: "Co-founded and led IBA CED (2010 to 2022), built an incubation hub and programmes for youth and women.",
+    after: "“Pakistan's largest and first entrepreneurial center with an incubator”, supporting numerous startups.",
+    source: "Robert A. Stringer, Babson; Ambassador Shahid Kamal",
+  },
+  {
+    icon: "grad",
+    title: "50+ universities trained to teach entrepreneurship",
+    who: "Faculty development across Pakistan & Sri Lanka",
+    before: "Universities without trained entrepreneurship faculty.",
+    did: "Faculty development workshops, 100+ case studies and training manuals.",
+    after: "Helped over 50 universities develop entrepreneurship faculties and supported an entrepreneurship centre in Sri Lanka.",
+    source: "Robert A. Stringer; Syed Waleed Mehmood Wasti",
+  },
+  {
+    icon: "globe",
+    title: "Babson faculty travelled to Pakistan to study the E+ Model",
+    who: "Prof. Bob Stringer, Babson College",
+    before: "A model built in Pakistan for emerging economies.",
+    did: "The Entrepreneurship Plus model was taught at IBA CED and presented internationally.",
+    after: "Babson faculty visited IBA CED to study it; USASBE awarded the programmes in 2017 and 2021.",
+    source: "Dr. Shahid Qureshi School of Entrepreneurship",
+  },
+  {
+    icon: "seedling",
+    title: "Shaping an entrepreneurial university",
+    who: "GIFT University, Gujranwala",
+    before: "A business school in an SME heartland of light engineering, sports goods and ceramics.",
+    did: "Shaped the vision, faculty development and curriculum, and connected it to regional entrepreneurs.",
+    after: "“a thriving hub for nurturing young talent with a focus on environmental, social, and ethical sustainability.”",
+    source: "Muhammad Anwar Dar, Chairman, GIFT University",
+  },
+];
+
+export const banners = [
+  { src: "/img/banners/01-model-goes-international.webp", alt: "The model goes international: MBA & EMBA taught in Pakistan, UAE, Germany & Thailand; the annual IEES starts" },
+  { src: "/img/banners/02-babson-recognition.webp", alt: "International academic recognition: Babson faculty visited IBA CED to study the E+ Model" },
 ];

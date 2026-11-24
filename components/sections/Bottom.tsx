@@ -8,11 +8,12 @@ import { IS_DEV, Ph, Val } from "@/components/ui/Ph";
 import { Reveal } from "@/components/ui/Reveal";
 import { YouTube } from "@/components/ui/YouTube";
 import { Curriculum, Marquee, type Module } from "./Interactive";
-import { CreativeStrip, StudentVoices } from "./Authority";
+import { CaseStudies, CostVisual, CreativeStrip, StoriesMarquee } from "./Authority";
+import { FlagGather } from "./Visual";
 import { LogoMark } from "@/components/ui/Logo";
 import { photo } from "@/lib/assets";
 
-/* 11 — International recognition */
+/* 11, International recognition */
 export function Recognition() {
   return (
     <section className="sec-white">
@@ -23,7 +24,7 @@ export function Recognition() {
             A Teaching Approach Recognised <span className="emerald-text">Beyond Borders.</span>
           </h2>
           <p className="lead">
-            USASBE awarded its Outstanding Entrepreneurship Program Awards in 2017 and 2021 to entrepreneurship programs designed and executed by Dr. Shahid Qureshi —
+            USASBE awarded its Outstanding Entrepreneurship Program Awards in 2017 and 2021 to entrepreneurship programs designed and executed by Dr. Shahid Qureshi,
             recognising their exceptional impact and innovation in entrepreneurship education.
           </p>
         </Reveal>
@@ -53,7 +54,7 @@ export function Recognition() {
   );
 }
 
-/* 12 — Global community */
+/* 12, Global community */
 export function Community() {
   const s = site.stats;
   return (
@@ -73,10 +74,7 @@ export function Community() {
           <div className="stat"><Counter to={s.participants} suffix="+" /><span>Participants</span></div>
           <div className="stat"><Counter to={s.batches} /><span>Previous Batches</span></div>
         </Reveal>
-        <Reveal className="map-wrap">
-          <Image src="/img/site/world-pins.webp" alt="World map of cities GCE participants have joined from" width={1259} height={446} sizes="(max-width:1200px) 100vw, 1150px" style={{ width: "100%", height: "auto" }} />
-        </Reveal>
-        <Marquee items={site.countries} />
+        <FlagGather />
         {IS_DEV && <p className="center" style={{ marginTop: 14, fontSize: ".78rem", opacity: 0.6 }}><Ph>Confirm GCE-only country list</Ph></p>}
         <Moments />
         <div className="cta-row center" style={{ marginTop: 36 }}>
@@ -87,11 +85,9 @@ export function Community() {
   );
 }
 
-/* 13 — Stories & testimonials */
+/* 13, Stories & testimonials */
 export function Stories() {
   const fa = site.featuredAlumni;
-  const reviews = site.testimonials.filter((t) => IS_DEV || (t.quote && t.name));
-  const cases = site.caseStudies.filter((c) => IS_DEV || (c.before && c.outcome));
   return (
     <section className="sec-ivory" id="stories">
       <div className="container">
@@ -101,82 +97,42 @@ export function Stories() {
             Real People. Real Experiences. <span className="emerald-text">Meaningful Learning.</span>
           </h2>
           <p className="lead">
-            Founders, professionals and learners from across the world — including well-known names like <strong>Dr. Amjad Saqib</strong> — have been through Dr. Shahid&apos;s
+            Founders, professionals and learners from across the world, including well known names like <strong>Dr. Amjad Saqib</strong>, have been through Dr. Shahid&apos;s
             entrepreneurship education. Here&apos;s how they describe it.
           </p>
         </Reveal>
 
-        <StudentVoices />
-
-        <Reveal className="featured-story">
+        <CaseStudies />
+      </div>
+      <div className="stories-marquee">
+        <div className="container"><h3 className="center sm-title">What Students, Colleagues &amp; Viewers Say</h3></div>
+        <StoriesMarquee />
+      </div>
+      <div className="container">
+        {(IS_DEV || fa.quote) && <Reveal className="featured-story">
           <div className="media">
-            {fa.youtubeId ? <YouTube id={fa.youtubeId} title={`${fa.name} — alumni story`} /> : <span className="play static"><Icon name="play" /></span>}
+            {fa.youtubeId ? <YouTube id={fa.youtubeId} title={`${fa.name}, alumni story`} /> : <Image src="/img/sir/speaking-mic.webp" alt="" fill sizes="500px" style={{ objectFit: "cover", objectPosition: "50% 20%" }} />}
           </div>
           <div className="body">
             <span className="eyebrow">Featured alumni story</span>
             <h3>{fa.name}</h3>
             <p style={{ color: "var(--muted)", fontSize: ".92rem" }}>{fa.role}</p>
             <blockquote><Val v={fa.quote} ph="Approved interview pull-quote in Saad's exact words" /></blockquote>
-            <Ph>Featured placement subject to participation &amp; marketing permission · add YouTube ID in content/site.ts</Ph>
+            <Ph>Featured placement subject to permission · add YouTube ID in content/site.ts</Ph>
           </div>
-        </Reveal>
-
-        {site.videos.testimonials.length > 0 ? (
-          <div className="video-wall">
-            {site.videos.testimonials.map((v) => (
-              <div key={v.youtubeId}><YouTube id={v.youtubeId} title={v.title} /><p className="vt-cap"><b>{v.title}</b> · {v.role}</p></div>
-            ))}
-          </div>
-        ) : (
-          IS_DEV && (
-            <div className="video-wall">
-              {["International Student", "Business Founder", "Corporate Professional"].map((r) => (
-                <div key={r} className="v-thumb"><span className="mini-play"><Icon name="play" /></span><div className="who"><b>{r}</b><span><Ph>video testimonial</Ph></span></div></div>
-              ))}
-            </div>
-          )
-        )}
-
-        {reviews.length > 0 && (
-          <div className="reviews">
-            {reviews.map((t, i) => (
-              <Reveal key={i} delay={(i % 3) * 0.08} className="review">
-                <div className="stars" aria-label="5 out of 5">★★★★★</div>
-                <p><Val v={t.quote} ph="Original approved testimonial" /></p>
-                <div className="by">
-                  <span className="av">{t.name ? t.name.split(" ").map((w) => w[0]).slice(0, 2).join("") : "GC"}</span>
-                  <div><b><Val v={t.name} ph="Student name" /></b><span><Val v={t.role} ph="Profession" /> · <Val v={t.country} ph="Country" /></span></div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        )}
-
-        {cases.length > 0 && (
-          <>
-            <h3 className="center" style={{ marginTop: 56 }}>From Learning to Real-World Application</h3>
-            {cases.map((c, i) => (
-              <Reveal key={i} className="case">
-                <div><b>Before GCE</b><p><Val v={c.before} ph="Original challenge" /></p></div>
-                <div><b>Key Learning</b><p><Val v={c.learning} ph="Framework discovered" /></p></div>
-                <div><b>Implementation</b><p><Val v={c.implementation} ph="What they applied" /></p></div>
-                <div><b>Outcome</b><p><Val v={c.outcome} ph="Verified result" /></p></div>
-              </Reveal>
-            ))}
-          </>
-        )}
+        </Reveal>}
       </div>
     </section>
   );
 }
 
-/* 14 — Who should join */
+/* 14, Who should join */
 const audiences: { icon: IconName; t: string; b: string }[] = [
-  { icon: "briefcase", t: "Corporate Professionals", b: "Explore opportunities beyond your current role — without rushing into unnecessary risk." },
+  { icon: "briefcase", t: "Corporate Professionals", b: "Explore opportunities beyond your current role, without rushing into unnecessary risk." },
   { icon: "bulb", t: "Aspiring Entrepreneurs", b: "Identify opportunities and begin with the capabilities you already have." },
   { icon: "store", t: "Existing Business Owners", b: "New approaches to innovation, growth, people and better decisions." },
-  { icon: "plane", t: "GCC-Based Professionals", b: "Build an entrepreneurial path while managing your career and commitments abroad." },
-  { icon: "woman", t: "Women Entrepreneurs", b: "Build around your strengths, circumstances and ambitions — on your terms." },
+  { icon: "plane", t: "GCC Based Professionals", b: "Build an entrepreneurial path while managing your career and commitments abroad." },
+  { icon: "woman", t: "Women Entrepreneurs", b: "Build around your strengths, circumstances and ambitions, on your terms." },
   { icon: "family", t: "Family Business Successors", b: "Innovate, lead responsibly and evolve the business you've inherited." },
 ];
 
@@ -203,7 +159,7 @@ export function WhoFor() {
           <Reveal className="fit-card fit-yes">
             <h3>GCE is for you if…</h3>
             <ul>
-              {["You're willing to question assumptions you've carried for years.", "You want to apply what you learn — not just collect certificates.", "You believe business should create value, not just extract it.", "You'll invest real time each week in your own growth."].map((x) => (
+              {["You're willing to question assumptions you've carried for years.", "You want to apply what you learn, not just collect certificates.", "You believe business should create value, not just extract it.", "You'll invest real time each week in your own growth."].map((x) => (
                 <li key={x}><Icon name="check" />{x}</li>
               ))}
             </ul>
@@ -211,7 +167,7 @@ export function WhoFor() {
           <Reveal delay={0.1} className="fit-card fit-no">
             <h3>GCE is <u>not</u> for you if…</h3>
             <ul>
-              {["You want guaranteed income or an overnight “get rich” formula.", "You plan to watch sessions passively and expect results anyway.", "You need an accredited MBA degree rather than a certificate-based program."].map((x) => (
+              {["You want guaranteed income or an overnight “get rich” formula.", "You plan to watch sessions passively and expect results anyway.", "You need an accredited MBA degree rather than a certificate based program."].map((x) => (
                 <li key={x}><Icon name="x" />{x}</li>
               ))}
             </ul>
@@ -226,14 +182,14 @@ export function WhoFor() {
   );
 }
 
-/* 15 — Curriculum */
+/* 15, Curriculum */
 const modules: Module[] = [
-  { title: "Entrepreneurial Mindset", summary: "Opportunity, uncertainty, creativity and the thinking patterns of entrepreneurs.", points: ["Understand how entrepreneurs actually think", "Identify and dismantle limiting assumptions", "Develop an opportunity-oriented perspective"] },
-  { title: "Effectuation Theory & the E+ Model", summary: "The five principles in practice, and the award-winning Entrepreneurship Plus pedagogy.", points: ["Bird-in-Hand, Affordable Loss, Crazy Quilt, Lemonade, Pilot-in-the-Plane", "When to use effectuation vs causation", "Purpose-driven venture design"] },
-  { title: "Entrepreneurial Marketing", summary: "Finding, understanding and serving customers with limited resources.", points: ["Customer discovery conversations", "Low-cost validation before big commitments", "Building a brand people trust"] },
-  { title: "People & Money Management", summary: "Leading teams and managing finances the way growing ventures need.", points: ["Building and leading a values-driven team", "Cash flow, pricing and financial discipline", "Deciding with incomplete information"] },
-  { title: "Scaling Up & Strategy", summary: "From founder-dependent to a business that grows beyond you.", points: ["Systems, partnerships and growth strategy", "Innovation inside existing businesses", "Local and global perspectives"] },
-  { title: "Values & Meaning in Life", summary: "Connecting trade, purpose and responsibility — business as a means, people as the purpose.", points: ["Ethical decision-making in business", "Purpose-to-practice: aligning work and values", "Building a legacy, not just a company"] },
+  { title: "Entrepreneurial Mindset", summary: "Opportunity, uncertainty, creativity and the thinking patterns of entrepreneurs.", points: ["Understand how entrepreneurs actually think", "Identify and dismantle limiting assumptions", "Develop an opportunity oriented perspective"] },
+  { title: "Effectuation Theory & the E+ Model", summary: "The five principles in practice, and the award-winning Entrepreneurship Plus pedagogy.", points: ["Bird in Hand, Affordable Loss, Crazy Quilt, Lemonade, Pilot in the Plane", "When to use effectuation vs causation", "Purpose driven venture design"] },
+  { title: "Entrepreneurial Marketing", summary: "Finding, understanding and serving customers with limited resources.", points: ["Customer discovery conversations", "Low cost validation before big commitments", "Building a brand people trust"] },
+  { title: "People & Money Management", summary: "Leading teams and managing finances the way growing ventures need.", points: ["Building and leading a values driven team", "Cash flow, pricing and financial discipline", "Deciding with incomplete information"] },
+  { title: "Scaling Up & Strategy", summary: "From founder dependent to a business that grows beyond you.", points: ["Systems, partnerships and growth strategy", "Innovation inside existing businesses", "Local and global perspectives"] },
+  { title: "Values & Meaning in Life", summary: "Connecting trade, purpose and responsibility, business as a means, people as the purpose.", points: ["Ethical decision making in business", "Purpose to practice: aligning work and values", "Building a legacy, not just a company"] },
 ];
 
 export function CurriculumSection() {
@@ -245,9 +201,9 @@ export function CurriculumSection() {
           <h2>
             Six Core Modules. <span className="emerald-text">One Integrated Approach.</span>
           </h2>
-          <p className="lead">A structured journey through the mindset, frameworks and capabilities behind building — and growing — meaningful businesses.</p>
+          <p className="lead">A structured journey through the mindset, frameworks and capabilities behind building, and growing, meaningful businesses.</p>
           <p style={{ marginTop: 18, color: "var(--muted)", fontSize: ".92rem" }}>
-            Executive entrepreneurship programs at leading international business schools teach parts of this — at a cost most of us can never justify. GCE brings it together
+            Executive entrepreneurship programs at leading international business schools teach parts of this, at a cost most of us can never justify. GCE brings it together
             in one cohort, led by the educator who designed it.
           </p>
           <div className="cta-row" style={{ marginTop: 28 }}>
@@ -256,19 +212,19 @@ export function CurriculumSection() {
         </Reveal>
         <div>
           <Curriculum modules={modules} />
-          <p style={{ marginTop: 14 }}><Ph>Proposed module descriptions — confirm official curriculum, durations &amp; guest speakers</Ph></p>
+          <p style={{ marginTop: 14 }}><Ph>Proposed module descriptions, confirm official curriculum, durations &amp; guest speakers</Ph></p>
         </div>
       </div>
     </section>
   );
 }
 
-/* 16 — Learning experience */
+/* 16, Learning experience */
 export function Experience() {
   const l = site.logistics;
   const items: { icon: IconName; t: string; b: string }[] = [
-    { icon: "video", t: "Live Online Sessions", b: `${l.schedule} — learn live with Dr. Shahid from anywhere in the world.` },
-    { icon: "tool", t: "Practical Learning", b: "Frameworks applied to real business situations — yours included." },
+    { icon: "video", t: "Live Online Sessions", b: `${l.schedule}, learn live with Dr. Shahid from anywhere in the world.` },
+    { icon: "tool", t: "Practical Learning", b: "Frameworks applied to real business situations, yours included." },
     { icon: "mic", t: "Guest Perspectives", b: "National and international resource persons and entrepreneurs." },
     { icon: "compass", t: "Mentorship", b: "Guidance and coaching according to your selected pathway." },
     { icon: "users", t: "The GCEian Community", b: `Connect with fellow learners across ${site.stats.countries} countries.` },
@@ -307,14 +263,14 @@ export function Experience() {
   );
 }
 
-/* 17 — Bonus stack */
+/* 17, Bonus stack */
 const bonuses = [
   ["The Resource Discovery Workbook", "Map your strengths, skills, experience and relationships into a clear inventory of entrepreneurial capital.", "I don't know where to begin."],
-  ["The 7-Day Opportunity Sprint", "A guided daily action plan that moves you from passive learning to your first real-world experiment within a week.", "I keep planning but never act."],
+  ["The 7 Day Opportunity Sprint", "A guided daily action plan that moves you from passive learning to your first real world experiment within a week.", "I keep planning but never act."],
   ["Customer Conversation Toolkit", "Interview scripts and worksheets to understand customers before you commit serious money.", "I don't know if people want this."],
-  ["The Affordable-Loss Planner", "Set clear limits on the money, time and reputation you'll commit to each experiment — so fear stops making decisions for you.", "I'm scared of financial risk."],
-  ["The Purpose-to-Practice Canvas", "Align your entrepreneurial decisions with your values, responsibilities and long-term purpose.", "I want my work to mean more than money."],
-  ["Exclusive Alumni Roundtable", "Interactive sessions with selected GCE alumni entrepreneurs — what worked, what didn't, and why.", "I need perspectives from people who've done it."],
+  ["The Affordable Loss Planner", "Set clear limits on the money, time and reputation you'll commit to each experiment, so fear stops making decisions for you.", "I'm scared of financial risk."],
+  ["The Purpose to Practice Canvas", "Align your entrepreneurial decisions with your values, responsibilities and long term purpose.", "I want my work to mean more than money."],
+  ["Exclusive Alumni Roundtable", "Interactive sessions with selected GCE alumni entrepreneurs, what worked, what didn't, and why.", "I need perspectives from people who've done it."],
   ["Lifetime GCEian Community + Family Course", "Stay connected to the global alumni network, plus free access to the Family Course so the people closest to you share the mindset.", "I'll lose momentum after the course ends."],
 ];
 
@@ -338,7 +294,7 @@ export function Bonuses() {
             </Reveal>
           ))}
         </div>
-        <p className="center" style={{ marginTop: 20 }}><Ph>Proposed bonuses — publish only approved, deliverable resources; assign per pathway in content/site.ts</Ph></p>
+        <p className="center" style={{ marginTop: 20 }}><Ph>Proposed bonuses, publish only approved, deliverable resources; assign per pathway in content/site.ts</Ph></p>
         <div className="cta-row center" style={{ marginTop: 32 }}>
           <Button href="#pricing" size="lg" trackId="bonus_unlock">Unlock the Complete GCE Experience</Button>
         </div>
@@ -347,7 +303,7 @@ export function Bonuses() {
   );
 }
 
-/* 18 — Pricing, pathways & risk reversal */
+/* 18, Pricing, pathways & risk reversal */
 export function Pricing() {
   const t = site.offerTerms;
   const wa = site.contact.whatsapp;
@@ -360,21 +316,22 @@ export function Pricing() {
             Exceptional Entrepreneurial Education <span className="emerald-text">Shouldn&apos;t Cost a Fortune.</span>
           </h2>
           <p className="lead">
-            An executive entrepreneurship program at a leading international business school can cost tens of thousands of dollars — plus travel, visas and weeks away from work.
+            An executive entrepreneurship program at a leading international business school can cost tens of thousands of dollars, plus travel, visas and weeks away from work.
             For most aspiring entrepreneurs, that door is simply closed.
           </p>
           <p className="lead">GCE opens a different one: internationally recognised entrepreneurial thinking, live online, from where you are.</p>
         </Reveal>
+        <CostVisual />
         <Reveal className="value-compare">
           <table>
-            <thead><tr><th scope="col">Traditional business-school route</th><th scope="col">GCE learning pathway</th></tr></thead>
+            <thead><tr><th scope="col">Traditional business school route</th><th scope="col">GCE learning pathway</th></tr></thead>
             <tbody>
               {[
-                ["1–2+ years of academic commitment", "Focused 8–16 week pathways"],
-                ["Broad general-management curriculum", "Entrepreneurship-focused, practical learning"],
-                ["Formal degree qualification", "Certificate-based program"],
+                ["1 to 2+ years of academic commitment", "Focused 8 to 16 week pathways"],
+                ["Broad general management curriculum", "Entrepreneurship focused, practical learning"],
+                ["Formal degree qualification", "Certificate based program"],
                 ["Significant tuition, travel & time off", "Accessible fees, learn from home"],
-                ["Rarely addresses values & purpose", "Purpose-driven E+ philosophy at the core"],
+                ["Rarely addresses values & purpose", "Purpose driven E+ philosophy at the core"],
               ].map(([a, b]) => (
                 <tr key={a}><td>{a}</td><td>{b}</td></tr>
               ))}
@@ -427,7 +384,7 @@ export function Pricing() {
           {(
             [
               ["eye", "Experience Before You Commit", <>Join the <Link href="/masterclass">free masterclass</Link> and see the teaching style first.</>],
-              ["doc", "Transparent Program Information", "Curriculum, duration, fees and terms — all clear before you pay."],
+              ["doc", "Transparent Program Information", "Curriculum, duration, fees and terms, all clear before you pay."],
               ["chat", "Personal Enrollment Guidance", "Talk to a real person before making your final decision."],
             ] as [IconName, string, React.ReactNode][]
           ).map(([ic, h, b], i) => (
@@ -442,7 +399,7 @@ export function Pricing() {
           <Reveal className="seal">
             <div className="seal-badge"><span><b>1st</b>SESSION<br />PROMISE</span></div>
             <div>
-              <h3 style={{ marginBottom: 8 }}>The First-Session Promise <Ph>pending Sir&apos;s approval</Ph></h3>
+              <h3 style={{ marginBottom: 8 }}>The First Session Promise <Ph>pending Sir&apos;s approval</Ph></h3>
               <p>
                 Attend the first live session. If you genuinely feel GCE isn&apos;t the right fit, tell us before session two and you&apos;ll receive{" "}
                 <Val v={t.firstSessionPromise} ph="approved remedy: full refund / transfer to a future cohort" />. We can offer this because, after nine batches, we know what
@@ -457,22 +414,22 @@ export function Pricing() {
   );
 }
 
-/* 19 — FAQ */
+/* 19, FAQ */
 export function Faq() {
   const t = site.offerTerms;
   const qa: [string, React.ReactNode][] = [
-    ["Can I join if I've never started a business before?", "Yes. GCE is designed for different stages of experience. Aspiring entrepreneurs begin by understanding the resources and opportunities they already have — exactly the point of Effectuation."],
-    ["Do I need significant capital to benefit?", "No. A core idea of the program is starting with available means and deciding what you can afford to lose — not waiting until you have large capital."],
+    ["Can I join if I've never started a business before?", "Yes. GCE is designed for different stages of experience. Aspiring entrepreneurs begin by understanding the resources and opportunities they already have, exactly the point of Effectuation."],
+    ["Do I need significant capital to benefit?", "No. A core idea of the program is starting with available means and deciding what you can afford to lose, not waiting until you have large capital."],
     ["Is it suitable for existing business owners?", "Very much so. Many participants run businesses and use GCE to innovate, build stronger teams and make better strategic decisions."],
-    ["Can I attend while working full-time?", "Yes. Sessions run on Saturdays with a morning and an evening option, designed around working professionals."],
+    ["Can I attend while working full time?", "Yes. Sessions run on Saturdays with a morning and an evening option, designed around working professionals."],
     ["I'm based in Saudi Arabia, UAE or another GCC country. Can I join?", <>Absolutely. GCE is fully live online, and participants have joined from {site.stats.countries} countries. <Ph>confirm time zones &amp; international payment methods</Ph></>],
     ["What's the difference between Discover, Develop and Transform?", "Duration (8, 12, 16 weeks), modules covered, bonuses and mentoring depth. If you're unsure, our enrollment team will help you choose."],
-    ["Will I receive a certificate?", "Yes — on completing the requirements of your chosen pathway."],
+    ["Will I receive a certificate?", "Yes, on completing the requirements of your chosen pathway."],
     ["Will session recordings be available?", <Val key="r" v={t.recordings} ph="confirm recording policy" />],
     ["Are installment plans or scholarships available?", <>{t.installments || t.scholarships ? <>{t.installments} {t.scholarships}</> : "Speak with our enrollment team about your situation."} <Ph>confirm</Ph></>],
     ["What if I can't attend after enrolling?", <Val key="c" v={t.cancellation} ph="approved transfer / cancellation policy" />],
-    ["Is GCE equivalent to an MBA?", "No, and we won't pretend it is. GCE is a focused, certificate-based entrepreneurship program. Many participants find it more directly useful for starting and growing ventures — but it is not a degree."],
-    ["Does this course guarantee business success or income?", "No honest program can. GCE gives you a way of thinking, practical frameworks and a community — what you build with them depends on your action."],
+    ["Is GCE equivalent to an MBA?", "No, and we won't pretend it is. GCE is a focused, certificate based entrepreneurship program. Many participants find it more directly useful for starting and growing ventures, but it is not a degree."],
+    ["Does this course guarantee business success or income?", "No honest program can. GCE gives you a way of thinking, practical frameworks and a community, what you build with them depends on your action."],
     ["How do I enroll?", "Choose a pathway above, complete the short form, then complete payment. You'll receive onboarding details by email and WhatsApp."],
   ];
   return (
@@ -499,7 +456,7 @@ export function Faq() {
   );
 }
 
-/* 20 — Final close */
+/* 20, Final close */
 export function FinalClose() {
   return (
     <section className="final grad-emerald on-dark">
@@ -516,7 +473,7 @@ export function FinalClose() {
         </Reveal>
         <Reveal delay={0.2}>
           <p className="lead" style={{ maxWidth: 720, margin: "0 auto" }}>
-            A year from now, you&apos;ll be one of two people. Same skills, same city, same income — still waiting for &ldquo;the right time&rdquo;. Or someone who learned to see
+            A year from now, you&apos;ll be one of two people. Same skills, same city, same income, still waiting for &ldquo;the right time&rdquo;. Or someone who learned to see
             differently, and started.
           </p>
         </Reveal>
@@ -528,20 +485,20 @@ export function FinalClose() {
           <span>From Dependence to Independence.</span>
           <span>From Hopelessness to Hope.</span>
           <span>From Knowledge to Meaningful Action.</span>
-          <span className="gold-text">Na-umeedi se umeed ki taraf.</span>
+          <span className="gold-text">Na umeedi se umeed ki taraf.</span>
         </div>
-        <p style={{ maxWidth: 640, margin: "0 auto 36px" }}>You don&apos;t have to know everything before you begin. You just have to be willing to think differently. If you&apos;ve read this far — you already are.</p>
+        <p style={{ maxWidth: 640, margin: "0 auto 36px" }}>You don&apos;t have to know everything before you begin. You just have to be willing to think differently. If you&apos;ve read this far, you already are.</p>
         <div className="cta-row center">
-          <Button href="#pricing" size="lg" trackId="final_begin">Begin Your GCE Journey</Button>
+          <Button href="/enroll" size="lg" trackId="final_begin">Begin Your GCE Journey</Button>
           <Button href="/masterclass" variant="ghost" trackId="final_masterclass">Not Ready? Join the Free Masterclass</Button>
         </div>
-        <p className="cta-note">Global Certificate in Entrepreneurship — Batch 10 · Live Online</p>
+        <p className="cta-note">Global Certificate in Entrepreneurship, Batch 10 · Live Online</p>
       </div>
     </section>
   );
 }
 
-/* Moments gallery — authentic classroom & event photography */
+/* Moments gallery, authentic classroom & event photography */
 function Moments() {
   const items = [
     { src: photo("/img/moments/auditorium.webp", "/img/site/dsq-stage.webp")!, alt: "Dr. Shahid Qureshi teaching a full auditorium", cap: "In the classroom", big: true },

@@ -32,7 +32,7 @@ export function Nav({ minimal = false }: { minimal?: boolean }) {
                 </li>
               ))}
             </ul>
-            <a href="#pricing" className="btn btn-primary" data-cta="header_get_enrolled">
+            <a href="/enroll" className="btn btn-primary" data-cta="header_get_enrolled">
               Get Enrolled <Icon name="arrow" />
             </a>
           </>
@@ -71,7 +71,7 @@ export function StickyCta() {
         <b>GCE Batch 10</b>
         <small>Explore pathways</small>
       </div>
-      <a href="#pricing" className="btn btn-primary" data-cta="mobile_sticky" tabIndex={show ? 0 : -1}>
+      <a href="/enroll" className="btn btn-primary" data-cta="mobile_sticky" tabIndex={show ? 0 : -1}>
         Get Enrolled
       </a>
     </div>

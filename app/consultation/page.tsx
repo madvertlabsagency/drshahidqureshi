@@ -10,7 +10,7 @@ export default async function Consultation({ searchParams }: { searchParams: Pro
   const sp = await searchParams;
   if (sp.sent)
     return (
-      <Shell title="Thank You — We'll Be in Touch" lead="A member of our enrollment team will contact you on WhatsApp shortly.">
+      <Shell title="Thank You, We'll Be in Touch" lead="A member of our enrollment team will contact you on WhatsApp shortly.">
         <div className="card narrow center">
           <div className="success-ring"><Icon name="check" /></div>
           <Button href="/" variant="ghost">Back to the Program</Button>

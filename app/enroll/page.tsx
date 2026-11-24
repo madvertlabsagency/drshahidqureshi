@@ -23,7 +23,7 @@ export default async function Enroll({ searchParams }: { searchParams: Promise<R
             <div><b>3</b><p>Join the GCEian community and your first live Saturday session{site.enrollment.commencementDate ? ` on ${site.enrollment.commencementDate}` : ""}.</p></div>
           </div>
           <div className="trust-mini">
-            <div><Icon name="award" /> USASBE-recognised programs, 2017 &amp; 2021</div>
+            <div><Icon name="award" /> USASBE recognised programs, 2017 &amp; 2021</div>
             <div><Icon name="globe" /> {site.stats.participants.toLocaleString()}+ participants · {site.stats.countries} countries</div>
             <div><Icon name="lock" /> Your details are encrypted and never sold</div>
           </div>

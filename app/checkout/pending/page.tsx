@@ -22,7 +22,7 @@ export default async function Pending({ searchParams }: { searchParams: Promise<
           </>
         ) : (
           <p style={{ marginTop: 10 }}>
-            You&apos;ll be redirected to our secure payment gateway. <Ph>Gateway integration pending — set PAYMENT_GATEWAY in .env</Ph>
+            You&apos;ll be redirected to our secure payment gateway. <Ph>Gateway integration pending, set PAYMENT_GATEWAY in .env</Ph>
           </p>
         )}
         <p className="cta-note">If you don&apos;t complete payment, we&apos;ll send a gentle reminder by email and WhatsApp (where you consented).</p>

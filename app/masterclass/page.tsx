@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Free Masterclass",
-  description: "Join Dr. Shahid Qureshi for a free masterclass: how to start thinking like an entrepreneur — even when resources are limited.",
+  description: "Join Dr. Shahid Qureshi for a free masterclass: how to start thinking like an entrepreneur, even when resources are limited.",
 };
 
 export default function Masterclass() {
@@ -22,11 +22,11 @@ export default function Masterclass() {
           <ul className="outcomes">
             <li><Icon name="check" />Why entrepreneurial thinking is about far more than having a business idea.</li>
             <li><Icon name="check" />How your existing skills, knowledge and relationships can open new opportunities.</li>
-            <li><Icon name="check" />An introduction to Effectuation and purpose-driven (E+) entrepreneurship.</li>
+            <li><Icon name="check" />An introduction to Effectuation and purpose driven (E+) entrepreneurship.</li>
           </ul>
           <h3>Your host</h3>
           <p style={{ color: "var(--muted)", marginTop: 6 }}>
-            Dr. Shahid Qureshi — PhD Entrepreneurship (TU Berlin), Babson Fellow, designer of USASBE award-winning entrepreneurship programs (2017 &amp; 2021), trained {site.stats.trained.toLocaleString()}+ entrepreneurs and managers worldwide.
+            Dr. Shahid Qureshi, PhD Entrepreneurship (TU Berlin), Babson Fellow, designer of USASBE award-winning entrepreneurship programs (2017 &amp; 2021), trained {site.stats.trained.toLocaleString()}+ entrepreneurs and managers worldwide.
           </p>
         </div>
         <SideSummary>

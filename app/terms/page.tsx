@@ -8,7 +8,7 @@ export default function Page() {
     <Legal
       title="Program Terms & Conditions"
       sections={[
-        ["The program", <p key="a">The Global Certificate in Entrepreneurship (GCE) is a certificate-based, live online learning program. It is not an accredited academic degree.</p>],
+        ["The program", <p key="a">The Global Certificate in Entrepreneurship (GCE) is a certificate based, live online learning program. It is not an accredited academic degree.</p>],
         ["Enrollment & fees", <p key="b">Enrollment is confirmed only once payment has been verified. Fees and applicable taxes are shown at checkout. [Approved fee, tax and installment terms]</p>],
         ["Participation & certificate", <p key="c">Certificates are awarded on completing the requirements of the selected pathway. [Attendance / assignment requirements]</p>],
         ["No guarantee of outcomes", <p key="d">GCE provides education, frameworks and community. Business, career or income outcomes depend on individual effort and circumstances and are not guaranteed.</p>],

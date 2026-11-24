@@ -1,13 +1,14 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { PrincipleArt } from "./Visual";
 
 const principles = [
-  { n: "01", name: "Bird-in-Hand", tag: "Start with who you are, what you know and whom you know.", body: "You don't begin with the perfect idea. You begin with your identity, knowledge and network — the resources already in your hand today.", ask: ["Try this now:", "list three skills, three things you know deeply and five people who'd take your call. That's your starting capital."] },
-  { n: "02", name: "Affordable Loss", tag: "Decide what you can afford to lose — not what you hope to win.", body: "Instead of betting everything on a forecast, you set a boundary on the money, time and reputation you're willing to invest in a step — and act within it.", ask: ["The shift:", "fear of failure shrinks when the worst case is a number you've already accepted."] },
-  { n: "03", name: "Crazy Quilt", tag: "Build with people who choose to commit.", body: "Partners, early customers and supporters bring resources and shape the venture with you. Pre-commitments reduce uncertainty more than any market report.", ask: ["The shift:", "you stop hunting for investors and start building a coalition."] },
-  { n: "04", name: "Lemonade", tag: "Turn surprises into opportunities.", body: "The unexpected — a lost client, a market shock, a strange request — isn't only a threat to avoid. It can be raw material for something new.", ask: ["The shift:", "setbacks stop being proof you “weren't meant for business”."] },
-  { n: "05", name: "Pilot-in-the-Plane", tag: "Focus on what you can control.", body: "You may not control the economy, the market or the headlines. You can control your next action, your partnerships and your decisions — and through them, shape the future.", ask: ["The shift:", "from waiting for conditions to improve, to creating them yourself."] },
+  { n: "01", name: "Bird in Hand", tag: "Start with who you are, what you know and whom you know.", body: "You don't begin with the perfect idea. You begin with your identity, knowledge and network, the resources already in your hand today.", ask: ["Try this now:", "list three skills, three things you know deeply and five people who'd take your call. That's your starting capital."] },
+  { n: "02", name: "Affordable Loss", tag: "Decide what you can afford to lose, not what you hope to win.", body: "Instead of betting everything on a forecast, you set a boundary on the money, time and reputation you're willing to invest in a step, and act within it.", ask: ["The shift:", "fear of failure shrinks when the worst case is a number you've already accepted."] },
+  { n: "03", name: "Crazy Quilt", tag: "Build with people who choose to commit.", body: "Partners, early customers and supporters bring resources and shape the venture with you. Commitments made early reduce uncertainty more than any market report.", ask: ["The shift:", "you stop hunting for investors and start building a coalition."] },
+  { n: "04", name: "Lemonade", tag: "Turn surprises into opportunities.", body: "The unexpected, a lost client, a market shock, a strange request, isn't only a threat to avoid. It can be raw material for something new.", ask: ["The shift:", "setbacks stop being proof you “weren't meant for business”."] },
+  { n: "05", name: "Pilot in the Plane", tag: "Focus on what you can control.", body: "You may not control the economy, the market or the headlines. You can control your next action, your partnerships and your decisions, and through them, shape the future.", ask: ["The shift:", "from waiting for conditions to improve, to creating them yourself."] },
 ];
 
 export function Principles() {
@@ -27,6 +28,7 @@ export function Principles() {
         <span className="big" aria-hidden="true">{p.n}</span>
         <AnimatePresence mode="wait">
           <motion.div key={p.n} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
+            <PrincipleArt n={p.n} />
             <h3>{p.name}</h3>
             <p className="tagq">{p.tag}</p>
             <p>{p.body}</p>

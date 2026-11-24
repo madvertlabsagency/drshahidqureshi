@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = { title: "Welcome to GCE", robots: { index: false } };
 
-/** Paid-student onboarding. Shows the welcome ONLY after server-side payment verification. */
+/** Paid student onboarding. Shows the welcome ONLY after server-side payment verification. */
 export default async function Welcome({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
   const order = readOrder<{ id: string; name: string }>(sp.order);
@@ -18,7 +18,7 @@ export default async function Welcome({ searchParams }: { searchParams: Promise<
     return (
       <Shell title="We're Verifying Your Payment" lead="This usually takes a few minutes. You'll receive a confirmation on email and WhatsApp as soon as it's verified.">
         <div className="card narrow center">
-          <p>Order: <b>{order?.id || "—"}</b></p>
+          <p>Order: <b>{order?.id || ", "}</b></p>
           <div className="cta-row center" style={{ marginTop: 20 }}>
             <Button href={whatsappHref(site.contact.whatsapp, `Assalam o Alaikum, please confirm payment for order ${order?.id || ""}.`)} external arrow={false}>Contact Enrollment Team</Button>
           </div>

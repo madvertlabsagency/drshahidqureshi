@@ -28,16 +28,16 @@ export default async function Checkout({ searchParams }: { searchParams: Promise
       <div className="form-shell">
         <div className="card">
           <CheckoutForm order={sp.order!} value={total} pathway={p.id} />
-          {p.feePKR == null && <p className="cta-note">This pathway&apos;s fee is being finalised — our team will contact you on WhatsApp.</p>}
+          {p.feePKR == null && <p className="cta-note">This pathway&apos;s fee is being finalised, our team will contact you on WhatsApp.</p>}
           <p className="cta-note">Order reference: <b>{order.id}</b>. Your enrollment is confirmed only after the payment is verified.</p>
         </div>
         <SideSummary>
           <span className="eyebrow">Your order summary</span>
-          <h3 style={{ color: "var(--ivory)" }}>GCE Batch 10 — {p.name}</h3>
-          <p style={{ marginBottom: 16 }}>{p.weeks}-week learning pathway</p>
+          <h3 style={{ color: "var(--ivory)" }}>GCE Batch 10, {p.name}</h3>
+          <p style={{ marginBottom: 16 }}>{p.weeks} week learning pathway</p>
           <div className="sum-line"><span>Program fee</span><span>{p.feePKR != null ? formatPKR(p.feePKR) : <Ph>fee</Ph>}</span></div>
           <div className="sum-line"><span>Applicable GST</span><span>{GST_RATE ? formatPKR(tax || 0) : <Ph>GST rate</Ph>}</span></div>
-          <div className="sum-line total"><span>Total payable</span><span>{total != null ? formatPKR(total) : "—"}</span></div>
+          <div className="sum-line total"><span>Total payable</span><span>{total != null ? formatPKR(total) : ", "}</span></div>
           <div className="trust-mini">
             <div><Icon name="lock" /> Payments processed by an approved, encrypted gateway</div>
             <div><Icon name="shield" /> Transparent terms · <Link href="/refund-policy" style={{ color: "var(--gold)" }}>refund policy</Link></div>

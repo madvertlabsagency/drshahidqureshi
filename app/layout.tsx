@@ -7,11 +7,11 @@ const url = process.env.NEXT_PUBLIC_SITE_URL || "https://drshahidqureshi.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: { default: "GCE Batch 10 — Global Certificate in Entrepreneurship | Dr. Shahid Qureshi", template: "%s | GCE Batch 10 · Dr. Shahid Qureshi" },
+  title: { default: "GCE Batch 10, Global Certificate in Entrepreneurship | Dr. Shahid Qureshi", template: "%s | GCE Batch 10 · Dr. Shahid Qureshi" },
   description:
-    "You don't need more resources to begin. You need a different way of thinking. Join Dr. Shahid Qureshi's internationally recognised Global Certificate in Entrepreneurship — Batch 10.",
+    "You don't need more resources to begin. You need a different way of thinking. Join Dr. Shahid Qureshi's internationally recognised Global Certificate in Entrepreneurship, Batch 10.",
   openGraph: {
-    title: "GCE Batch 10 — Change the Way You Think. Change What You Can Build.",
+    title: "GCE Batch 10, Change the Way You Think. Change What You Can Build.",
     description: "The entrepreneurship program behind two USASBE recognitions (2017 & 2021). Live online. Practical frameworks. A global community.",
     images: ["/img/usasbe-award-2.webp"],
     type: "website",

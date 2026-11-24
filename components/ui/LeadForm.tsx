@@ -118,7 +118,7 @@ export function LeadForm({
               {site.pathways.map((p) => (
                 <label key={p.id} className="opt">
                   <input type="radio" name="pathway" value={p.id} defaultChecked={defaultPathway === p.id} />
-                  <b>{p.name}</b> — {p.weeks} weeks
+                  <b>{p.name}</b> · {p.weeks} weeks
                   <span>{p.feePKR != null ? `${formatPKR(p.feePKR)} ${p.taxNote}` : "Fee on request"}</span>
                 </label>
               ))}

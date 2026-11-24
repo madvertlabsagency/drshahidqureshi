@@ -1,5 +1,5 @@
 /**
- * GCE Batch 10 — single source of editable funnel content.
+ * GCE Batch 10, single source of editable funnel content.
  *
  * CMS-ready: every value here can be moved to a headless CMS (Sanity, Contentful, Strapi…)
  * without touching components. Any value set to `null` is UNCONFIRMED: it renders as a
@@ -50,7 +50,7 @@ export const site = {
     city: "Karachi, Pakistan",
   },
 
-  /** Only set a deadline once it is confirmed — urgency copy appears only when this is set. */
+  /** Only set a deadline once it is confirmed, urgency copy appears only when this is set. */
   enrollment: {
     open: true,
     commencementDate: "Saturday, 9 January 2027" as string | null, // from the official Batch 10 banner
@@ -61,8 +61,8 @@ export const site = {
   logistics: {
     format: "Live Online",
     schedule: "Every Saturday",
-    morning: "9:00 – 11:00 AM",
-    evening: "7:00 – 9:00 PM",
+    morning: "9:00 to 11:00 AM",
+    evening: "7:00 to 9:00 PM",
     timeZone: null as string | null, // e.g. "PKT (GMT+5)"
     language: null as string | null,
   },
@@ -80,10 +80,10 @@ export const site = {
   videos: {
     vsl: { youtubeId: "9tqbIQwOtCw", title: "Discover the Entrepreneurial Mindset", label: "Dr. Shahid's personal introduction to GCE" } as VideoItem,
     podcasts: [
-      { youtubeId: "QOBrZEC6meI", title: "Why Mindset — Not Money — Is the Real Starting Capital", label: "Podcast · Dr. Shahid Qureshi" },
+      { youtubeId: "QOBrZEC6meI", title: "Why Mindset, Not Money, Is the Real Starting Capital", label: "Podcast · Dr. Shahid Qureshi" },
       { youtubeId: "vU6QQ97yPFg", title: "People Are the Purpose. Business Is the Tool.", label: "Podcast · Dr. Shahid Qureshi" },
     ] as VideoItem[],
-    /** Student video testimonials — add YouTube IDs once approved. */
+    /** Student video testimonials, add YouTube IDs once approved. */
     testimonials: [] as (VideoItem & { role: string })[],
   },
 
@@ -105,13 +105,13 @@ export const site = {
       feePKR: 70000,
       taxNote: "+ GST",
       featured: true,
-      features: ["Everything in Discover", "AI in Business · Marketing Analytics", "Money Management · Design Thinking", "Operations Management", "Group coaching to refine your business idea", "Bonuses 01–06 incl. Alumni Roundtable"],
+      features: ["Everything in Discover", "AI in Business · Marketing Analytics", "Money Management · Design Thinking", "Operations Management", "Group coaching to refine your business idea", "Bonuses 01 to 06 incl. Alumni Roundtable"],
     },
     {
       id: "transform",
       name: "Transform",
       weeks: 16,
-      tagline: "The full six-module transformation with deeper mentorship.",
+      tagline: "The full six module transformation with deeper mentorship.",
       feePKR: null,
       taxNote: "+ GST",
       features: ["Everything in Develop", "Scaling Up, Strategy & Values modules", "All 7 bonuses incl. lifetime community", null],
@@ -129,7 +129,7 @@ export const site = {
 
   featuredAlumni: {
     name: "Saad Afridi",
-    role: "Founder & CEO — Scents N Stories",
+    role: "Founder & CEO, Scents N Stories",
     quote: null as string | null,
     youtubeId: null as string | null,
   },
@@ -147,12 +147,12 @@ export const site = {
   mentor: {
     bio: null as string | null,
     credentials: [
-      "PhD in Entrepreneurship — TU Berlin, Germany",
+      "PhD in Entrepreneurship, TU Berlin, Germany",
       "Rector, GIFT University, Gujranwala",
-      "Professor & Director, IBA Centre for Entrepreneurial Development (2010–2022)",
+      "Professor & Director, IBA Centre for Entrepreneurial Development (2010 to 2022)",
       "Led Global Entrepreneurship Monitor (GEM) research in Pakistan",
       "Babson Fellow in Entrepreneurship",
-      "USASBE Outstanding Program Awards — 2017 & 2021",
+      "USASBE Outstanding Program Awards, 2017 & 2021",
       "20+ years teaching & mentoring worldwide",
       "10,000+ entrepreneurs & managers trained",
       "Taught at TU Berlin, Frankfurt School, Toulouse BS, SP Jain Dubai, Kempten",
@@ -166,7 +166,7 @@ export const site = {
   ],
 
   masterclass: {
-    title: "How to Start Thinking Like an Entrepreneur — Even When Resources Are Limited.",
+    title: "How to Start Thinking Like an Entrepreneur, Even When Resources Are Limited.",
     date: null as string | null,
     time: null as string | null,
     format: "Live online · Free",
